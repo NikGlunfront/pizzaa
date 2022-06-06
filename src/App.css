@@ -1,38 +1,221 @@
-.App {
-  text-align: center;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #0c192c;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h3 {
+    margin-bottom: 50px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.board {
+    width: calc(64px * 8);
+    height: calc(64px * 8);
+    display: flex;
+    flex-wrap: wrap;
+    border: 5px solid white;
+    box-shadow: 
+        0 0 100px #4fc3dc,
+    0 0 250px #4fc3dc;
 }
 
-.App-link {
-  color: #61dafb;
+.info-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30px;
+    border-radius: 20px;
+    padding: 20px;
+    border: 5px solid #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cell {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.cell img {
+    display: block;
+    max-height: 70%;
+    object-fit: contain;
+}
+
+.black {
+    background-color: #5D5D5D;
+}
+
+.white {
+    background-color: #67B9E2;
+}
+
+.with-figure {
+    cursor: pointer;
+}
+
+.to-eat {
+    background-color: #F08282;
+}
+
+.selected {
+    background: #81E3BD;
+}
+
+.available {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background-color: #00ff0a;
+    box-shadow: 0 0 10px #00ff0a,
+        0 0 20px #00ff0a,
+        0 0 30px #00ff0a,
+        0 0 40px #00ff0a,
+        0 0 50px #00ff0a,
+        0 0 60px #00ff0a;
+}
+
+.lost-figures-row {
+    display: flex;
+    padding: 30px;
+    border: 2px solid #fff;
+    background-color: #0c192c;
+    border-radius: 20px;
+}
+
+.lost {
+    width: calc(64px * 4 - 30px);
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lost h3 {
+    margin-bottom: 10px;
+}
+
+.lost__figures {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.lost:last-child {
+    margin-right: 0;
+}
+
+.lost img {
+    width: calc(64px * 0.7);
+    object-fit: contain;
+    display: block;
+}
+
+.lost-figure {
+    text-align: center;
+    margin: 10px;
+    width: calc(100% / 5);
+    color: #fff;
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.timer button {
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #67B9E2;
+    font-weight: 700;
+    border: none;
+    color: #fff;
+    margin: 0 auto 30px;
+    transition: all .3s linear;
+}
+
+.timer button:hover {
+    box-shadow: 0 0 7px #67B9E2,
+    0 0 14px #67B9E2,0 0 20px #67B9E2;
+}
+
+.timer-colors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #fff;
+    font-weight: 700;
+}
+
+.timer-colors h2 {
+    margin: 0 20px;
+}
+/* .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    background-color: #0c192c;
+}
+.bubbles {
+    display: flex; 
+    position: relative;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.bubbles span {
+    position: relative; 
+    width: 30px;
+    height: 30px;
+    opacity: 0.6;
+    background: #4fc3dc;
+    margin: 0 4px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #4fc3dc44,
+        0 0 50px #4fc3dc,
+    0 0 100px #4fc3dc;
+    animation: animate 15s linear infinite;
+}
+
+.bubbles span:nth-child(even) {
+    background: #ff2d75;
+    box-shadow: 0 0 0 10px #ff2d7544,
+        0 0 50px #ff2d75,
+    0 0 100px #ff2d75;
+}
+
+@keyframes animate {
+    0%
+    {
+        transform: translateY(100vh) scale(0);
+    }
+    100%
+    {
+        transform: translateY(-10vh) scale(1);
+    }
+} */
