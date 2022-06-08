@@ -33,13 +33,13 @@ export class Figure {
             return false
         }
         if (target.figure?.name === FigureNames.KING) {
-            return false;
+            return true;
         } else {
             return true;
         }
     }
 
     moveFigure(target: Cell) {
-
+        
     }
 }

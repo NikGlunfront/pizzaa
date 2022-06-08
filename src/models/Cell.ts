@@ -96,17 +96,15 @@ export class Cell {
             : this.board.lostBlackFigures.push(figure)
     }
 
-    
-    
+
     moveFigure(target: Cell) {
         if (this.figure && this.figure?.canMove(target)) {
-            this.figure.moveFigure(target)
             target.figure && this.addLostFigure(target.figure)
             target.setFigure(this.figure);
             this.figure = null;
+            target.figure?.moveFigure(target)
 
-            this.board.setBlackUnderAttack()
-            this.board.isBlackKingUnderAttack = true
+            this.board.checkIsKingUnderAttack(target);
         }
     } 
 

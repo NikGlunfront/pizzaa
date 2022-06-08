@@ -16,14 +16,16 @@ function App() {
     const [isWhiteUnderAttack, setIsWhiteUnderAttack] = useState<boolean>(false)
     const [isBlackUnderAttack, setIsBlackUnderAttack] = useState<boolean>(false)
 
+    
+
     useEffect(() => {
         restart()
     }, [])
 
     useEffect(() => {
-        
-        console.log(board.isWhiteKingUnderAttack)
-    },[board])
+        setIsWhiteUnderAttack(board.isWhiteKingUnderAttack)
+        setIsBlackUnderAttack(board.isBlackKingUnderAttack)
+    },[board.isWhiteKingUnderAttack, board.isBlackKingUnderAttack])
 
     function restart() {
         const newBoard = new Board();

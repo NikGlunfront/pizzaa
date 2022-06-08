@@ -53,6 +53,7 @@ export class Board {
         newBoard.isBlackKingUnderAttack = this.isBlackKingUnderAttack
         newBoard.isWhiteKingUnderAttack = this.isWhiteKingUnderAttack
         newBoard.cells = this.cells
+        newBoard.cells.forEach(x => x.forEach(y => y.board = newBoard))
         return newBoard;
     }
 
@@ -100,24 +101,62 @@ export class Board {
         this.addRooks()
     }
 
-    public getBlackKingPosition() {
+    private getBlackKingCell() {
         for (let i = 0; i < this.cells.length; i++) {
             const row = this.cells[i];
 
             for (let j = 0; j < row.length; j++) {
-                let cell = this.cells[i][j]
-                if (cell.figure?.name === FigureNames.KING) {
-                    return cell
+                let cell = this.cells[i][j];
+                if (
+                    cell.figure?.name === FigureNames.KING &&
+                    cell.figure.color === Colors.BLACK
+                ) {
+                    return this.getCell(cell.x, cell.y);
                 }
             }
         }
-    }
-    
-    public setBlackUnderAttack() {
-        this.isWhiteKingUnderAttack = true
+
+        return this.getCell(0, 0);
     }
 
-    // public setWhiteUnderAttack() {
-    //     this.isWhiteKingUnderAttack = true
-    // }
+    private getWhiteKingCell(): Cell {
+        for (let i = 0; i < this.cells.length; i++) {
+            const row = this.cells[i];
+
+            for (let j = 0; j < row.length; j++) {
+                let cell = this.cells[i][j];
+                if (
+                    cell.figure?.name === FigureNames.KING &&
+                    cell.figure.color === Colors.WHITE
+                ) {
+                    return this.getCell(cell.x, cell.y);
+                }
+            }
+        }
+
+        return this.getCell(0, 0);
+    }
+
+    private setBlackUnderAttack(isTrue: boolean) {
+        this.isBlackKingUnderAttack = isTrue;
+    }
+
+    private setWhiteUnderAttack(isTrue: boolean) {
+        this.isWhiteKingUnderAttack = isTrue;
+    }
+
+    public checkIsKingUnderAttack(current: Cell) {
+        if (current.figure?.color === Colors.WHITE) {
+            const currentBlackKingPosition: Cell = this.getBlackKingCell();
+                this.setBlackUnderAttack(current.figure.canMove(currentBlackKingPosition));
+                console.log(this.isBlackKingUnderAttack)
+        }
+
+        if (current.figure?.color === Colors.BLACK) {
+            const currentWhiteKingPosition: Cell = this.getWhiteKingCell();
+            this.setWhiteUnderAttack(current.figure.canMove(currentWhiteKingPosition));
+                console.log(this.isWhiteKingUnderAttack)
+        }
+    }
+    
 }
